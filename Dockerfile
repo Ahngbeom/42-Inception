@@ -1,18 +1,23 @@
-FROM		debian:buster
+FROM debian:buster
 
-MAINTAINER	bahn <https://github.com/AhngBeom>
+MAINTAINER bahn <https://github.com/AhngBeom>
 
-RUN		apt-get update && apt-get upgrade && apt-get -y install \
-			nginx \
-			curl \
-			openssl \
-			vim \
-			mariadb-server \
-			php-mysql \
-			php-mbstring \
-			wget \
-			php7.3-fpm
+RUN apt-get update && apt-get -y upgrade && apt-get -y install \
+	    nginx \
+	    curl \
+	    openssl \
+	    vim \
+	    mariadb-server \
+	    php-mysql \
+	    php-mbstring \
+	    wget \
+	    php7.3-fpm
 
-EXPOSE		80 443
+COPY ./srcs/run.sh /copy
+COPY ./srcs/default /copy
+COPY ./srcs/wp-config.php /copy
+COPY ./srcs/config.inc.php /copy
 
-CMD		bash run.sh
+EXPOSE 80 443
+
+CMD bash ./run.sh
