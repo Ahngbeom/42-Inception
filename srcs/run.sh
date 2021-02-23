@@ -23,10 +23,9 @@ cp -p ./copy/wp-config.php /var/www/html/wordpress
 
 # mysql 구문을 통해 워드프레스 DB 생성
 service mysql start
-echo "CREATE DATABASE IF NOT EXISTS wordpress;"	| mysql -u root --skip-password
-echo "CREATE USER IF NOT EXISTS 'bahn'@'localhost' IDENTIFIED BY '';"  | mysql -u root --skip-password
-echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'bahn'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password
-echo "USE wordpress;"
+echo "CREATE DATABASE IF NOT EXISTS wordpress;"	| mysql -u root
+echo "CREATE USER IF NOT EXISTS 'bahn'@'localhost' IDENTIFIED BY '1234';"  | mysql -u root
+echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'bahn'@'localhost' WITH GRANT OPTION;" | mysql -u root
 
 # phpMyAdmin 구축 
 wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
