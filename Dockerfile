@@ -1,6 +1,6 @@
 FROM debian:buster
 
-MAINTAINER bahn <https://github.com/AhngBeom>
+LABEL bahn_github=<https://github.com/AhngBeom>
 
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 	    nginx \
