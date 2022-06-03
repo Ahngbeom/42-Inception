@@ -1,4 +1,4 @@
-# Inception [![bahn's 42 stats](https://badge42.vercel.app/api/v2/cl1n6fb2j003009l0lfanbfyx/stats?cursusId=21&coalitionId=85)](https://github.com/JaeSeoKim/badge42)
+# Inception [![bahn's 42 Inception Score](https://badge42.vercel.app/api/v2/cl1n6fb2j003009l0lfanbfyx/project/2586655)](https://github.com/JaeSeoKim/badge42)
 
 ## How to
 
