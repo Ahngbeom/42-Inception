@@ -1,13 +1,13 @@
-# 2C-ft_server [![bahn's 42 ft_server Score](https://badge42.vercel.app/api/v2/cl1n6fb2j003009l0lfanbfyx/project/2100321)](https://github.com/JaeSeoKim/badge42)
+# 2C-ft_server [![bahn's 42 stats](https://badge42.vercel.app/api/v2/cl1n6fb2j003009l0lfanbfyx/stats?cursusId=21&coalitionId=85)](https://github.com/JaeSeoKim/badge42)
 
 ## How to
 
 ```bash
-docker build . -t ft_server
+docker build . -t Inception
 ```
 
 ```bash
-docker run -it --name ft_server -p 80:80 -p 443:443 ft_server
+docker run -it --name ft_server -p 80:80 -p 443:443 Inception
 ```
 
 ## Testing
