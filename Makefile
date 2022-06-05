@@ -1,4 +1,8 @@
-NAME = inception
+build-up :
+	docker-compose -f srcs/docker-compose.yml up -d --build
 
-all	:
-	docker-compose -f srcs/docker-compose.yml up --build
+build-down :
+	docker-compose -f srcs/docker-compose.yml down
+
+.PHONY : build-up build-down
+

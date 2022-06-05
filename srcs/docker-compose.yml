@@ -2,8 +2,11 @@ version: "3.9"  # optional since v1.27.0
 
 services:
   nginx:
-    image: nginx:latest
+    # image: nginx:latest
+    build: requirements/nginx/
     ports:
+      - "80:80"
       - "443:443"
-    volumes:
-      - .:/usr/share/nginx/html/
+    # volumes:
+      # - .:/usr/share/nginx/html/
+      # - .:/var/www/html/
