@@ -6,9 +6,7 @@ services: # Container Define
     build: requirements/nginx/  # Path where Dockerfile exists
     ports: # Public Port Define: [Hosts Port]:[Container Port]
       - "443:443"
-    depends_on:
-      - wordpress
-    restart: always
+    # restart: always
   
   wordpress:
     container_name: wordpress
@@ -22,7 +20,7 @@ services: # Container Define
       WORDPRESS_DB_USER: bahn
       WORDPRESS_DB_PASSWORD: 1234
       WORDPRESS_DB_NAME: wordpress
-    restart: always
+    # restart: always
 
   # mariadb:
   #   container_name: mariadb

@@ -22,10 +22,11 @@ FROM debian:buster
 # 		# unzip \
 # 		# git
 
+
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 	vim \
 	wget \
-	php-fpm \
+	php7.3-fpm \
 	php-mysql \
 	php-mbstring
 
@@ -39,6 +40,6 @@ RUN	tar -xvf latest.tar.gz
 
 COPY ./conf/wp-config.php /var/www/html/wordpress
 
-EXPOSE 443
+EXPOSE 9000
 
 # CMD [ "nginx", "-g", "daemon off;" ]
