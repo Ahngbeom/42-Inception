@@ -1,41 +1,56 @@
 version: "3"  # optional since v1.27.0
 
-services: # Container Define
-  nginx:  # Container Name
-    container_name: nginx
-    build: requirements/nginx/  # Path where Dockerfile exists
-    ports: # Public Port Define: [Hosts Port]:[Container Port]
-      - "443:443"
-    # restart: always
-  
-  wordpress:
-    container_name: wordpress
-    build: requirements/wordpress/
-    ports:
-      - "9000:9000"
-    volumes:
-      - "wordpress_data:/var/www/html"
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: bahn
-      WORDPRESS_DB_PASSWORD: 1234
-      WORDPRESS_DB_NAME: wordpress
-    # restart: always
-
-  # mariadb:
-  #   container_name: mariadb
-  #   build: requirements/mariadb/
-  #   ports:
-  #     -"3306:3306"
-  #   volumes:
-  #     - "db_data:var/lib/mysql"
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: 0000
-  #     MYSQL_DATABASE: wordpress
-  #     MYSQL_USER: bahn
-  #     MYSQL_PASSWORD: 1234
-
+networks:
+  inception-network:
+    driver: bridge
 
 volumes:
   db_data: {}
   wordpress_data: {}
+
+services: # Container Define
+  # mariadb:
+  #   image: mariadb
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - db_data:/var/lib/mysql
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: 1234
+  #   #   MYSQL_ROOT_PASSWORD: 0000
+  #   #   MYSQL_DATABASE: wordpress
+  #   #   MYSQL_USER: bahn
+  #   #   MYSQL_PASSWORD: 1234
+  #   networks:
+  #     - inception-network
+  
+  # wordpress:
+  #   image: wordpress
+  #   ports:
+  #     - "9000:9000"
+  #   volumes:
+  #     - "wordpress_data:/var/www/html"
+  #   # environment:
+  #   #   WORDPRESS_DB_HOST: db
+  #   #   WORDPRESS_DB_USER: bahn
+  #   #   WORDPRESS_DB_PASSWORD: 1234
+  #   #   WORDPRESS_DB_NAME: wordpress
+  #   networks:
+  #     - inception-network
+  #   depends_on:
+  #     - mariadb
+  #   # restart: always
+
+  nginx:  # Container Name
+    build: requirements/nginx  # Path where Dockerfile exists
+    # depends_on:
+    #   - wordpress
+    # volumes:
+    #   - wordpress_data:/var/www/html
+    ports: # Public Port Define: [Hosts Port]:[Container Port]
+      - 8080:8080
+      - 443:443
+    networks:
+      - inception-network
+    # restart: always
+  

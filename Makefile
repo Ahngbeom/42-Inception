@@ -4,7 +4,7 @@ up :
 
 down :
 # docker-compose -f srcs/docker-compose.yml down
-	docker-compose -f srcs/docker-compose.yml down --rmi local
+	docker-compose -f srcs/docker-compose.yml down --rmi all
 
 restart :
 	docker-compose -f srcs/docker-compose.yml restart
