@@ -1,7 +1,6 @@
 FROM debian:buster
 
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
-		curl \
 	    nginx \
 		openssl
 
@@ -12,6 +11,6 @@ RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 -sha256 \
 
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 8080 443
+EXPOSE 443
 
 CMD [ "nginx", "-g", "daemon off;" ]

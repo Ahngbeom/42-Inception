@@ -9,48 +9,59 @@ volumes:
   wordpress_data: {}
 
 services: # Container Define
-  # mariadb:
-  #   image: mariadb
-  #   ports:
-  #     - 3306:3306
-  #   volumes:
-  #     - db_data:/var/lib/mysql
-  #   environment:
-  #     MARIADB_ROOT_PASSWORD: 1234
-  #   #   MYSQL_ROOT_PASSWORD: 0000
-  #   #   MYSQL_DATABASE: wordpress
-  #   #   MYSQL_USER: bahn
-  #   #   MYSQL_PASSWORD: 1234
-  #   networks:
-  #     - inception-network
+  mariadb:
+    container_name: mariadb
+    # image: mariadb
+    build: requirements/mariadb
+    ports:
+      - 3306
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      # MYSQL_ROOT_PASSWORD: 1234
+      # MYSQL_DATABASE: wordpress
+      # MYSQL_USER: bahn
+      # MYSQL_PASSWORD: 1234
+      MARIADB_ROOT_PASSWORD: 1234
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: bahn
+      MARIADB_PASSWORD: 1234
+    env_file:
+      - .env
+    networks:
+      - inception-network
+    restart: unless-stopped
   
-  # wordpress:
-  #   image: wordpress
-  #   ports:
-  #     - "9000:9000"
-  #   volumes:
-  #     - "wordpress_data:/var/www/html"
-  #   # environment:
-  #   #   WORDPRESS_DB_HOST: db
-  #   #   WORDPRESS_DB_USER: bahn
-  #   #   WORDPRESS_DB_PASSWORD: 1234
-  #   #   WORDPRESS_DB_NAME: wordpress
-  #   networks:
-  #     - inception-network
-  #   depends_on:
-  #     - mariadb
-  #   # restart: always
+  wordpress:
+    container_name: wordpress
+    # image: wordpress
+    build: requirements/wordpress
+    ports:
+      - 9000
+    volumes:
+      - wordpress_data:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: inception:3306
+      WORDPRESS_DB_USER: bahn
+      WORDPRESS_DB_PASSWORD: 1234
+      WORDPRESS_DB_NAME: wordpress
+    networks:
+      - inception-network
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
+    restart: unless-stopped
 
   nginx:  # Container Name
     build: requirements/nginx  # Path where Dockerfile exists
-    # depends_on:
-    #   - wordpress
-    # volumes:
-    #   - wordpress_data:/var/www/html
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress_data:/var/www/html
     ports: # Public Port Define: [Hosts Port]:[Container Port]
-      - 8080:8080
       - 443:443
     networks:
       - inception-network
-    # restart: always
+    restart: unless-stopped
   

@@ -24,9 +24,10 @@ FROM debian:buster
 
 
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
-	vim \
+	# vim \
 	wget \
-	php7.3-fpm \
+	php \
+	php-fpm \
 	php-mysql \
 	php-mbstring
 
@@ -38,8 +39,14 @@ RUN	tar -xvf latest.tar.gz
 # RUN mv wordpress/ /var/www/html/
 	# cp -p ./copy/wp-config.php /var/www/html/wordpress
 
-COPY ./conf/wp-config.php /var/www/html/wordpress
+
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
+COPY ./tools /var/www/
 
 EXPOSE 9000
 
-# CMD [ "nginx", "-g", "daemon off;" ]
+RUN chmod +x /var/www/wp-init.sh
+
+ENTRYPOINT [ "/var/www/wp-init.sh" ]
+
+CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
