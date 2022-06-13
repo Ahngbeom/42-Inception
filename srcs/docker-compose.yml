@@ -11,49 +11,45 @@ volumes:
 services: # Container Define
   mariadb:
     container_name: mariadb
-    # image: mariadb
     build: requirements/mariadb
     ports:
       - 3306
     volumes:
       - db_data:/var/lib/mysql
-    environment:
-      # MYSQL_ROOT_PASSWORD: 1234
-      # MYSQL_DATABASE: wordpress
-      # MYSQL_USER: bahn
-      # MYSQL_PASSWORD: 1234
-      MARIADB_ROOT_PASSWORD: 1234
-      MARIADB_DATABASE: wordpress
-      MARIADB_USER: bahn
-      MARIADB_PASSWORD: 1234
     env_file:
       - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
     networks:
       - inception-network
     restart: unless-stopped
   
   wordpress:
     container_name: wordpress
-    # image: wordpress
     build: requirements/wordpress
     ports:
       - 9000
     volumes:
       - wordpress_data:/var/www/html
+    env_file:
+      - .env
     environment:
-      WORDPRESS_DB_HOST: inception:3306
-      WORDPRESS_DB_USER: bahn
-      WORDPRESS_DB_PASSWORD: 1234
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
     networks:
       - inception-network
     depends_on:
       - mariadb
-    env_file:
-      - .env
+    
     restart: unless-stopped
 
   nginx:  # Container Name
+    container_name: nginx
     build: requirements/nginx  # Path where Dockerfile exists
     depends_on:
       - wordpress
