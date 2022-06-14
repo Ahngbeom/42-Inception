@@ -7,6 +7,8 @@ networks:
 volumes:
   db_data: {}
   wordpress_data: {}
+  # db_data: { /home/ahngbeom/data/ }
+  # wordpress_data: { /home/ahngbeom/data/ }
 
 services: # Container Define
   mariadb:
@@ -16,13 +18,14 @@ services: # Container Define
       - 3306
     volumes:
       - db_data:/var/lib/mysql
+      # - db_data:/var/lib/mysql
     env_file:
       - .env
-    environment:
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    # environment:
+    #   MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    #   MARIADB_DATABASE: ${MARIADB_DATABASE}
+    #   MARIADB_USER: ${MARIADB_USER}
+    #   MARIADB_PASSWORD: ${MARIADB_PASSWORD}
     networks:
       - inception-network
     restart: unless-stopped
@@ -34,13 +37,14 @@ services: # Container Define
       - 9000
     volumes:
       - wordpress_data:/var/www/html
+      # - wordpress_data:/home/bahn/data
     env_file:
       - .env
-    environment:
-      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
-      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
-      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+    # environment:
+    #   WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+    #   WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+    #   WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+    #   WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
     networks:
       - inception-network
     depends_on:
