@@ -5,12 +5,9 @@ RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 
 EXPOSE 3306
 
-COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/
-# COPY conf/my.cnf /etc/mysql/
-COPY tools/create_db.sql /var/www/
+COPY conf/my.cnf /etc/mysql/
+COPY tools/create_db.sql /var/tmp/
 
-RUN service mysql start && mysql < /var/www/create_db.sql
-# RUN ["/bin/bash", "-c", "service mysql start && mysql < /var/www/create_db.sql"]
-# RUN ["/bin/bash", "-c", "mysql < /var/www/create_db.sql"]
+RUN service mysql start && mysql < /var/tmp/create_db.sql
 
 CMD [ "mysqld" ]

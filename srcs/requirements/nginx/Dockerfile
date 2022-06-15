@@ -9,7 +9,7 @@ RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 -sha256 \
 	-keyout /etc/ssl/private/inception_openssl.key \
 	-out /etc/ssl/certs/inception_openssl.pem
 
-COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./conf/ /etc/nginx/conf.d/
 
 EXPOSE 443
 

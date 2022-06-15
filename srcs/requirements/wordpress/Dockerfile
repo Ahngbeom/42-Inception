@@ -26,6 +26,7 @@ FROM debian:buster
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 	# vim \
 	wget \
+	curl \
 	php \
 	php-fpm \
 	php-mysql \
@@ -45,13 +46,19 @@ RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 # RUN mv -f wordpress /var/www/html
 # RUN rm -rf wordpress-6.0-ko_KR.tar.gz
 
-COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
-COPY ./tools /var/www/
+COPY ./conf /etc/php/7.3/fpm/pool.d/
+COPY ./tools /var/temp/
 
 EXPOSE 9000
 
-RUN chmod +x /var/www/wp-init.sh
+# Reference: https://wp-cli.org/#installing
+# RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
+RUN curl -kO --retry 3 https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
+RUN chmod +x wp-cli.phar; 
+RUN mv wp-cli.phar /usr/local/bin/wp;
 
-ENTRYPOINT [ "/var/www/wp-init.sh" ]
+RUN chmod +x /var/temp/wp-init.sh
+
+ENTRYPOINT [ "/var/temp/wp-init.sh" ]
 
 CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
