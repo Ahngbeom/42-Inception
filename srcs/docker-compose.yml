@@ -1,14 +1,29 @@
-version: "3"  # optional since v1.27.0
+version: "3.5"  # optional since v1.27.0
 
 networks:
   inception-network:
     driver: bridge
 
 volumes:
-  db_data: {}
+  mariadb_data: {}
   wordpress_data: {}
-  # db_data: { /home/ahngbeom/data/ }
-  # wordpress_data: { /home/ahngbeom/data/ }
+
+# volumes:
+#   mariadb_data:
+#     # name: mariadb_data
+#     driver: local
+#     driver_opts:
+#       device: /home/ahngbeom/data/mariadb_data
+#       type: volume
+#       o: bind
+
+#   wordpress_data:
+#     # name: wordpress_data
+#     driver: local
+#     driver_opts:
+#       device: /home/ahngbeom/data/wordpress_data
+#       type: volume
+#       o: bind
 
 services: # Container Define
   mariadb:
@@ -17,7 +32,11 @@ services: # Container Define
     ports:
       - 3306
     volumes:
-      - db_data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
+      # - /home/ahngbeom/data/mariadb_data:/var/lib/mysql
+      # - type: bind
+      #   source: /home/ahngbeom/data/mariadb_data
+      #   target: /var/lib/mysql
     env_file:
       - .env
     # environment:
@@ -27,7 +46,7 @@ services: # Container Define
     #   MARIADB_PASSWORD: ${MARIADB_PASSWORD}
     networks:
       - inception-network
-    restart: unless-stopped
+    restart: always
   
   wordpress:
     container_name: wordpress
@@ -36,6 +55,10 @@ services: # Container Define
       - 9000
     volumes:
       - wordpress_data:/var/www/html
+      # - /home/ahngbeom/data/wordpress_data:/var/www/html
+      # - type: bind
+      #   source: /home/ahngbeom/data/wordpress_data
+      #   target: /var/www/html
     env_file:
       - .env
     # environment:
@@ -48,7 +71,7 @@ services: # Container Define
     depends_on:
       - mariadb
     
-    restart: unless-stopped
+    restart: always
 
   nginx:  # Container Name
     container_name: nginx
@@ -57,9 +80,13 @@ services: # Container Define
       - wordpress
     volumes:
       - wordpress_data:/var/www/html
+      # - /home/ahngbeom/data/wordpress_data:/var/www/html
+      # - type: bind
+      #   source: /home/ahngbeom/data/wordpress_data
+      #   target: /var/www/html
     ports: # Public Port Define: [Hosts Port]:[Container Port]
       - 443:443
     networks:
       - inception-network
-    restart: unless-stopped
+    restart: always
   

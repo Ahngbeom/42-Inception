@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  9 13:44:52 2022
+# Make data base, printed on Thu Jun 16 14:43:08 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ make: *** No rule to make target 'all'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
+WSLENV = VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up
 # default
 .SHELLFLAGS := -c
 # environment
@@ -33,9 +33,9 @@ CURDIR := /home/ahngbeom/42/inception
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"738ac08552cca045871a73764b8c446f.ko","_translationsConfigFile":"/home/ahngbeom/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko/tcf.json","_cacheRoot":"/home/ahngbeom/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko","_resolvedLanguagePackCoreLocation":"/home/ahngbeom/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/ahngbeom/.vscode-server/data/clp/738ac08552cca045871a73764b8c446f.ko/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"94d04f8e2ade75eed3e2f1e9c4fab2ee.ko","_translationsConfigFile":"/home/ahngbeom/.vscode-server/data/clp/94d04f8e2ade75eed3e2f1e9c4fab2ee.ko/tcf.json","_cacheRoot":"/home/ahngbeom/.vscode-server/data/clp/94d04f8e2ade75eed3e2f1e9c4fab2ee.ko","_resolvedLanguagePackCoreLocation":"/home/ahngbeom/.vscode-server/data/clp/94d04f8e2ade75eed3e2f1e9c4fab2ee.ko/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/home/ahngbeom/.vscode-server/data/clp/94d04f8e2ade75eed3e2f1e9c4fab2ee.ko/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /home/ahngbeom/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
+_ = /home/ahngbeom/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -49,13 +49,15 @@ VSCODE_CWD = /mnt/c/Users/bbu07/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/ahngbeom/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/NAT Service:/mnt/c/Program Files/Eclipse Foundation/jdk-11.0.12.7/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/mingw64/bin:/mnt/d/H/chaturbate/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Python39/Scripts:/mnt/c/Python39:/mnt/c/Users/bbu07/AppData/Local/Programs/Python/Python39/Scripts:/mnt/c/Users/bbu07/AppData/Local/Programs/Python/Python39:/mnt/c/Users/bbu07/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/bbu07/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Bandizip/:/mnt/g/IntelliJ IDEA 2021.2.3/bin
+PATH = /home/ahngbeom/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/NAT Service:/mnt/c/Program Files/Eclipse Foundation/jdk-11.0.12.7/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/mingw64/bin:/mnt/d/H/chaturbate/bin:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Python39/Scripts:/mnt/c/Python39:/mnt/c/Users/bbu07/AppData/Local/Programs/Python/Python39/Scripts:/mnt/c/Users/bbu07/AppData/Local/Programs/Python/Python39:/mnt/c/Users/bbu07/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/bbu07/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Bandizip/:/mnt/g/IntelliJ IDEA 2021.2.3/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-46525c1e-0694-47cd-a894-ee3316489913.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-3dca049c-b830-483e-ac16-0e2e68d1c510.sock
+# environment
+VSCODE_SERVER_TAR = /mnt/c/Users/bbu07/AppData/Local/Temp/vscode-remote-wsl/30d9c6cd9483b2cc586687151bcbcd635f373630/vscode-server-stable-linux-x64.tar.gz
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -63,7 +65,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = 172.31.240.1:0
+DISPLAY = 172.25.0.1:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -71,7 +73,7 @@ PWD = /home/ahngbeom/42/inception
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/29714_interop
+WSL_INTEROP = /run/WSL/67_interop
 # environment
 MANPATH = /home/linuxbrew/.linuxbrew/share/man::
 # environment
@@ -141,7 +143,6 @@ MAKEFILES :=
 # automatic
 <F = $(notdir $<)
 # environment
- 
 LIBGL_ALWAYS_INDIRECT = 1
 # environment
 PAGER = less
@@ -166,7 +167,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
 # variable set hash-table stats:
-# Load=76/1024=7%, Rehash=0, Collisions=5/101=5%
+# Load=77/1024=8%, Rehash=0, Collisions=5/102=5%
 
 # Pattern-specific Variable Values
 
@@ -184,12 +185,6 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Files
 
-re-build: down up
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-
 # Not a target:
 all:
 #  Command line target.
@@ -197,7 +192,7 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-.PHONY: up down restart re-build ps
+.PHONY: up down restart re clean ps
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -207,13 +202,13 @@ up:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 3):
-	docker-compose -f srcs/docker-compose.yml up -d --build
+#  recipe to execute (from 'Makefile', line 2):
+	docker-compose -f srcs/docker-compose.yml up --build -V
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-07 14:07:49.579425
+#  Last modified 2022-06-16 14:07:50.6992167
 #  File has been updated.
 #  Successfully updated.
 
@@ -228,40 +223,56 @@ restart:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
- 
-#  recipe to execute (from 'Makefile', line 10):
-	docker-compose -f srcs/docker-compose.yml restart
+#  recipe to execute (from 'Makefile', line 8):
+	docker-compose -f srcs/docker-compose.yml up --build --force-recreate --always-recreate-deps
+
+re: clean up
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 13):
+	docker container prune --force
+	docker image prune -a --force
+	docker volume prune --force
+	docker network prune --force
 
 down:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 7):
-	docker-compose -f srcs/docker-compose.yml down --rmi local
+#  recipe to execute (from 'Makefile', line 5):
+	docker-compose -f srcs/docker-compose.yml down
 
 ps:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 15):
+#  recipe to execute (from 'Makefile', line 19):
 	docker-compose -f srcs/docker-compose.yml ps
 
 # files hash-table stats:
-# Load=10/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/30=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 148 B / avg = 7 B
-# current buf: size = 8162 B / used = 148 B / count = 20 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 21 / storage = 148 B / avg = 7 B
+# current buf: size = 8162 B / used = 148 B / count = 21 / avg = 7 B
 
-# strcache performance: lookups = 37 / hit rate = 45%
+# strcache performance: lookups = 40 / hit rate = 47%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=1/37=3%
-# Finished Make data base on Thu Jun  9 13:44:52 2022
+# Load=21/8192=0%, Rehash=0, Collisions=1/40=2%
+# Finished Make data base on Thu Jun 16 14:43:08 2022
 
  
