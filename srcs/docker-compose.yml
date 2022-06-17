@@ -5,24 +5,26 @@ networks:
     driver: bridge
 
 volumes:
-  mariadb_data: {}
-  wordpress_data: {}
+  mariadb_data:
+    name: mariadb_data
+  wordpress_data: 
+    name: wordpress_data
 
 # volumes:
 #   mariadb_data:
-#     # name: mariadb_data
+#     name: mariadb_data
 #     driver: local
 #     driver_opts:
 #       device: /home/ahngbeom/data/mariadb_data
-#       type: volume
+#       type: bind
 #       o: bind
 
 #   wordpress_data:
-#     # name: wordpress_data
+#     name: wordpress_data
 #     driver: local
 #     driver_opts:
 #       device: /home/ahngbeom/data/wordpress_data
-#       type: volume
+#       type: bind
 #       o: bind
 
 services: # Container Define
@@ -34,9 +36,6 @@ services: # Container Define
     volumes:
       - mariadb_data:/var/lib/mysql
       # - /home/ahngbeom/data/mariadb_data:/var/lib/mysql
-      # - type: bind
-      #   source: /home/ahngbeom/data/mariadb_data
-      #   target: /var/lib/mysql
     env_file:
       - .env
     # environment:
