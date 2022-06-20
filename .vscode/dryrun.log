@@ -1,5 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/ahngbeom/42/inception'
-docker-compose -f srcs/docker-compose.yml up --build -V
-make: Leaving directory '/home/ahngbeom/42/inception'
- 
