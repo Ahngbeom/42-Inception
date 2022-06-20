@@ -7,8 +7,19 @@ networks:
 volumes:
   mariadb_data:
     name: mariadb_data
-  wordpress_data: 
+    driver: local
+    driver_opts:
+      device: $HOME/data/mariadb_data
+      type: volume
+      o: bind
+
+  wordpress_data:
     name: wordpress_data
+    driver: local
+    driver_opts:
+      device: $HOME/data/wordpress_data
+      type: volume
+      o: bind
 
 services: # Container Define
   mariadb:
