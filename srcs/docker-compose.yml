@@ -9,7 +9,8 @@ volumes:
     name: mariadb_data
     driver: local
     driver_opts:
-      device: /home/ahngbeom/42/inception/data/mariadb_data
+      # device: /home/ahngbeom/42/inception/data/mariadb_data
+      device: /home/ahngbeom/data/mariadb_data
       type: volume
       o: bind
 
@@ -17,7 +18,8 @@ volumes:
     name: wordpress_data
     driver: local
     driver_opts:
-      device: /home/ahngbeom/42/inception/data/wordpress_data
+      # device: /home/ahngbeom/42/inception/data/wordpress_data
+      device: /home/ahngbeom/data/wordpress_data
       type: volume
       o: bind
 
