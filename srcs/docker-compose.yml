@@ -1,4 +1,4 @@
-version: "3.5"  # optional since v1.27.0
+version: "3"
 
 networks:
   inception-network:
@@ -6,16 +6,12 @@ networks:
 
 volumes:
   mariadb_data:
-    name: mariadb_data
-    driver: local
     driver_opts:
       device: $HOME/data/mariadb_data
       type: volume
       o: bind
 
   wordpress_data:
-    name: wordpress_data
-    driver: local
     driver_opts:
       device: $HOME/data/wordpress_data
       type: volume
@@ -25,9 +21,11 @@ services: # Container Define
   mariadb:
     container_name: mariadb
     build: requirements/mariadb
-    ports:
-      - 3306
-    volumes:
+    networks:
+      - inception-network
+    ports: # Public Port Define: [Hosts Port]:[Container Port]
+      - 3306:3306
+    volumes: # Mount [Hosts Path]:[Container Path]
       - mariadb_data:/var/lib/mysql
     env_file:
       - .env
@@ -36,16 +34,18 @@ services: # Container Define
     #   MARIADB_DATABASE: ${MARIADB_DATABASE}
     #   MARIADB_USER: ${MARIADB_USER}
     #   MARIADB_PASSWORD: ${MARIADB_PASSWORD}
-    networks:
-      - inception-network
-    restart: always
+    restart: "no"
   
   wordpress:
     container_name: wordpress
     build: requirements/wordpress
-    ports:
-      - 9000
-    volumes:
+    depends_on:
+      - mariadb
+    networks:
+      - inception-network
+    ports: # Public Port Define: [Hosts Port]:[Container Port]
+      - 9000:9000
+    volumes: # Mount [Hosts Path]:[Container Path]
       - wordpress_data:/var/www/html
     env_file:
       - .env
@@ -54,23 +54,18 @@ services: # Container Define
     #   WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
     #   WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     #   WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
-    networks:
-      - inception-network
-    depends_on:
-      - mariadb
-    
-    restart: always
+    restart: "no"
 
   nginx:  # Container Name
     container_name: nginx
     build: requirements/nginx  # Path where Dockerfile exists
     depends_on:
       - wordpress
-    volumes:
-      - wordpress_data:/var/www/html
     ports: # Public Port Define: [Hosts Port]:[Container Port]
       - 443:443
     networks:
       - inception-network
-    restart: always
+    volumes: # Mount [Hosts Path]:[Container Path]
+      - wordpress_data:/var/www/html
+    restart: "no"
   
