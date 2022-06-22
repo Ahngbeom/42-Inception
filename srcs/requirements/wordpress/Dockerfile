@@ -1,30 +1,6 @@
 FROM debian:buster
 
-# RUN apt-get update && apt-get -y upgrade && apt-get -y install \
-# 		wget \
-# 		tar \
-# 		php-fpm \
-# 		apache2 \
-# 		gnupg2 ca-certificates apt-transport-https software-properties-common
-# 		# php \
-# 		# libapache2-mod-php \
-# 		# php-pear \
-# 		# php-cgi \
-# 		# php-common \
-# 		# php-mbstring \
-# 		# php-zip \
-# 		# php-net-socket \
-# 		# php-mysql \
-# 		# php-bcmath \
-# 		# php-gd \
-# 		# php-xml-util \
-# 		# php-gettext \
-# 		# unzip \
-# 		# git
-
-
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
-	# vim \
 	wget \
 	curl \
 	php \
@@ -51,8 +27,7 @@ COPY ./tools /var/temp/
 
 EXPOSE 9000
 
-# Reference: https://wp-cli.org/#installing
-# RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
+##### Reference: https://wp-cli.org/#installing
 RUN curl -kO --retry 3 https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
 RUN chmod +x wp-cli.phar; 
 RUN mv wp-cli.phar /usr/local/bin/wp;
