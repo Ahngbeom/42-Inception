@@ -11,17 +11,17 @@ restart:
 	docker-compose -f srcs/docker-compose.yml up --build --force-recreate --always-recreate-deps
 
 clean:
-# Container
+##### Container
 	docker container prune --force
 
-# Volume
+##### Volume
     # docker volume prune --force
 	docker-compose -f srcs/docker-compose.yml down -v
 
-# Network
+##### Network
 	docker network prune --force
 
-# Image	
+##### Image	
 	docker image prune -a --force
 
 fclean: clean

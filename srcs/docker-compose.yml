@@ -28,12 +28,13 @@ services: # Container Define
     volumes: # Mount [Hosts Path]:[Container Path]
       - mariadb_data
     env_file:
-      - .env
+      - ./.env
     # environment:
-    #   MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-    #   MARIADB_DATABASE: ${MARIADB_DATABASE}
-    #   MARIADB_USER: ${MARIADB_USER}
-    #   MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    #   - MARIADB_DATABASE=${MARIADB_DATABASE}
+    #   - MARIADB_ROOT_USER=${MARIADB_ROOT_USER}
+    #   - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+    #   - MARIADB_USER=${MARIADB_USER}
+    #   - MARIADB_PASSWORD=${MARIADB_PASSWORD}
     restart: "no"
   
   wordpress:
@@ -49,11 +50,6 @@ services: # Container Define
       - wordpress_data:/var/www/html
     env_file:
       - .env
-    # environment:
-    #   WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
-    #   WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
-    #   WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
-    #   WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     restart: "no"
 
   nginx:  # Container Name

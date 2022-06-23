@@ -5,8 +5,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 	curl \
 	php \
 	php-fpm \
-	php-mysql \
-	php-mbstring
+	php-mysql 
 
 # RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
 # 	wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add -
@@ -25,15 +24,12 @@ RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 COPY ./conf /etc/php/7.3/fpm/pool.d/
 COPY ./tools /var/temp/
 
-EXPOSE 9000
-
 ##### Reference: https://wp-cli.org/#installing
 RUN curl -kO --retry 3 https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
 RUN chmod +x wp-cli.phar; 
 RUN mv wp-cli.phar /usr/local/bin/wp;
 
 RUN chmod +x /var/temp/wp-init.sh
-
 ENTRYPOINT [ "/var/temp/wp-init.sh" ]
 
-CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
+CMD ["php-fpm7.3", "--nodaemonize"]
