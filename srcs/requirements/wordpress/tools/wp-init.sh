@@ -9,21 +9,17 @@ set -e
 
 if [ ! -f /var/www/html/wp-config.php ]; then
 
-	mkdir -p /var/www/html
-	
 	# Check wp info
 	wp --info
 
 	# Korean Language WordPress
 	cd /var/www/html && wp core download --allow-root --locale=ko_KR ;
 
-	# mv /var/temp/wp-config.php /var/www/html/
-	
 	# wp config create --allow-root --dbname=${WORDPRESS_DB_NAME} --dbuser=${WORDPRESS_DB_USER} --dbpass=${WORDPRESS_DB_PASSWORD} --dbhost=${WORDPRESS_DB_HOST};
 	cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 	
 	# sed -i : 찾은 문자열 위에 다른 문자열로 대체
-	# "username_here" 문자열 위에 $WORDPRESS_DB_USER 환경 변수 값으로 대체
+	# 모든 라인에 존재하는 "username_here" 문자열 위에 $WORDPRESS_DB_USER 환경 변수 값으로 대체
 	sed -i "s/username_here/$WORDPRESS_DB_USER/g" /var/www/html/wp-config.php
 	sed -i "s/password_here/$WORDPRESS_DB_PASSWORD/g" /var/www/html/wp-config.php
 	sed -i "s/localhost/$WORDPRESS_DB_HOST/g" /var/www/html/wp-config.php
