@@ -8,7 +8,7 @@ EXPOSE 3306
 COPY conf/my.cnf /etc/mysql/
 COPY tools/ /var/tmp/
 
-RUN service mysql start && mysql < /var/tmp/create_db.sql
-# RUN service mysql start && bash /var/tmp/create_db.sh
+RUN service mysql start && mysql < /var/tmp/db-init.sql
+# RUN service mysql start && bash /var/tmp/db-init.sh
 
 CMD [ "mysqld" ]
