@@ -3,7 +3,7 @@ set -e
 
 ## DB 생성
 # mysql -u root -e "CREATE DATABASE IF NOT EXISTS wordpress"
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DATABASE"
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS ${MARIADB_DATABASE}"
 
 ## 일반 유저 계정 생성
 mysql -u root -e "CREATE user IF NOT EXISTS 'bahn'@'%' identified BY '1234'"
