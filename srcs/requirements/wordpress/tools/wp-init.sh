@@ -13,7 +13,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 	wp --info
 
 	### Korean Language WordPress
-	cd /var/www/html && wp core download --allow-root --locale=ko_KR ;
+	# cd /var/www/html && wp core download --allow-root --locale=ko_KR;
+	cd /var/www/html && wp core download --allow-root;
 
 	# wp config create --allow-root --dbname=${WORDPRESS_DB_NAME} --dbuser=${WORDPRESS_DB_USER} --dbpass=${WORDPRESS_DB_PASSWORD} --dbhost=${WORDPRESS_DB_HOST};
 	cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
