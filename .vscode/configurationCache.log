@@ -1,0 +1,1 @@
+{"buildTargets":["clean","down","fclean","re","restart","stop","up"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

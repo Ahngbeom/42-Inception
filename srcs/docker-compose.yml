@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 networks:
   inception-network:
@@ -29,13 +29,7 @@ services: # Container Define
       - mariadb_data:/var/lib/mysql
     env_file:
       - .env
-    # environment:
-      # - MARIADB_DATABASE=$${MARIADB_DATABASE}
-      # - MARIADB_ROOT_USER=${MARIADB_ROOT_USER}
-      # - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
-      # - MARIADB_USER=${MARIADB_USER}
-      # - MARIADB_PASSWORD=${MARIADB_PASSWORD}
-    restart: "no"
+    restart: always
   
   wordpress:
     container_name: wordpress
@@ -50,7 +44,7 @@ services: # Container Define
       - wordpress_data:/var/www/html
     env_file:
       - .env
-    restart: "no"
+    restart: always
 
   nginx:  # Container Name
     container_name: nginx
@@ -63,5 +57,5 @@ services: # Container Define
       - inception-network
     volumes: # Mount [Hosts Path]:[Container Path]
       - wordpress_data:/var/www/html
-    restart: "no"
+    restart: always
   
