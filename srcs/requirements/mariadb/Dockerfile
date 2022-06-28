@@ -1,7 +1,6 @@
 FROM debian:buster
 
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
-		mariadb-client \
 		mariadb-server
 
 COPY conf/my.cnf /etc/mysql/
