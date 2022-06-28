@@ -1,4 +1,6 @@
 up:
+	@mkdir -p ~/data/mariadb_data
+	@mkdir -p ~/data/wordpress_data
 	docker-compose -f srcs/docker-compose.yml up --build
 
 stop:
