@@ -4,32 +4,32 @@ networks:
   inception-network:
     driver: bridge
 
-volumes:
-  mariadb_data:
-    driver_opts:
-      device: $HOME/data/mariadb_data
+volumes: # Create Volumes
+  mariadb_data: # Volume Name
+    driver_opts: # Set Driver Option of this volume
+      device: $HOME/data/mariadb_data # Mount Path
       type: none
       o: bind
 
-  wordpress_data:
-    driver_opts:
-      device: $HOME/data/wordpress_data
+  wordpress_data: # Volume Name
+    driver_opts: # Set Driver Option of this volume
+      device: $HOME/data/wordpress_data # Mount Path
       type: none
       o: bind
 
 services: # Container Define
   mariadb:
     container_name: mariadb
-    build: requirements/mariadb
+    build: requirements/mariadb # Path where Dockerfile exists
     networks:
       - inception-network
     ports: # Public Port Define: [Hosts Port]:[Container Port]
       - 3306:3306
     volumes: # Mount [Hosts Path]:[Container Path]
       - mariadb_data:/var/lib/mysql
-    env_file:
+    env_file: # Environment Value File
       - .env
-    restart: always
+    restart: "no"
   
   wordpress:
     container_name: wordpress
@@ -42,9 +42,9 @@ services: # Container Define
       - 9000:9000
     volumes: # Mount [Hosts Path]:[Container Path]
       - wordpress_data:/var/www/html
-    env_file:
+    env_file: # Environment Value File
       - .env
-    restart: always
+    restart: "no"
 
   nginx:  # Container Name
     container_name: nginx
@@ -57,5 +57,7 @@ services: # Container Define
       - inception-network
     volumes: # Mount [Hosts Path]:[Container Path]
       - wordpress_data:/var/www/html
-    restart: always
+    env_file:
+      - .env
+    restart: "no"
   

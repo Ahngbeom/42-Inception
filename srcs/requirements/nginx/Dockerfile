@@ -2,13 +2,14 @@ FROM debian:buster
 
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 	    nginx \
-		openssl
+		openssl \
+		gettext-base
 
-RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 -sha256 \
-	-subj "/C=KR/L=Seoul/ST=Seoul/O=42/OU=42Seoul/CN=bahn.42.fr" \
-	-keyout /etc/ssl/private/inception_PRIVATE_KEY.key \
-	-out /etc/ssl/certs/inception_CSR.csr
+# COPY ./conf/default.conf /etc/nginx/conf.d/
+COPY ./conf/default.conf.template /etc/nginx/conf.d/
+COPY ./tools /var/temp/
 
-COPY ./conf/ /etc/nginx/conf.d/
+RUN chmod +x /var/temp/nginx-init.sh
+ENTRYPOINT [ "/var/temp/nginx-init.sh" ]
 
 CMD [ "nginx", "-g", "daemon off;" ]

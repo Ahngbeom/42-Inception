@@ -4,10 +4,10 @@ server {
   listen              443 ssl http2;
   listen              [::]:443 ssl http2;
 
-  server_name         Inception;
+  server_name         $SERVER_NAME;
 
-	ssl_certificate_key /etc/ssl/private/inception_PRIVATE_KEY.key;
-  ssl_certificate     /etc/ssl/certs/inception_CSR.csr;
+	ssl_certificate_key /etc/ssl/private/$PRIVATEKEY_NAME;
+  ssl_certificate     /etc/ssl/certs/$CSR_NAME;
 	ssl_protocols       TLSv1.2 TLSv1.3;
 
   root        /var/www/html/;
