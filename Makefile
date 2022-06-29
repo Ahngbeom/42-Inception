@@ -1,35 +1,31 @@
 up:
 	@mkdir -p ~/data/mariadb_data
 	@mkdir -p ~/data/wordpress_data
-	docker-compose -f srcs/docker-compose.yml up --build
-
-stop:
-	docker-compose -f srcs/docker-compose.yml stop
+	docker-compose -f srcs/docker-compose.yml -p inception up --build --detach
 
 down:
-	docker-compose -f srcs/docker-compose.yml down
+	docker-compose -f srcs/docker-compose.yml -p inception down
 
 restart:
-	docker-compose -f srcs/docker-compose.yml up --build --force-recreate --always-recreate-deps
+	docker-compose -f srcs/docker-compose.yml -p inception restart
 
-clean:
-##### Container
+clean: down
+### Container
 	docker container prune --force
 
-##### Volume
-    # docker volume prune --force
-	docker-compose -f srcs/docker-compose.yml down -v
+### Volume
+	docker volume prune --force
 
-##### Network
+### Network
 	docker network prune --force
 
-##### Image	
+### Image	
 	docker image prune -a --force
 
 fclean: clean
 	sudo rm -rf ~/data/mariadb_data/*
 	sudo rm -rf ~/data/wordpress_data/*
 
-re : fclean up
+re : clean up
 
-.PHONY : up down restart re clean fclean
+.PHONY : up down restart clean fclean re
