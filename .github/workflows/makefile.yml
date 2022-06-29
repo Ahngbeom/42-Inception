@@ -1,0 +1,39 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: make
+      run: make
+      
+    - name: make restart
+      run: make restart
+      
+    - name: make down
+      run: make down
+      
+    - name: make up
+      run: make up
+    
+    - name: make clean
+      run: make clean
+    
+    - name: make up
+      run: make up
+    
+    - name: make re
+      run: make re
+      
+    - name: make fclean
+      run: make fclean
