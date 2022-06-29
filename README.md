@@ -1,5 +1,8 @@
 # Inception [![bahn's 42 Inception Score](https://badge42.vercel.app/api/v2/cl1n6fb2j003009l0lfanbfyx/project/2586655)](https://github.com/JaeSeoKim/badge42)
-# [Notion](https://jr-developer-ahngbeom.notion.site/Inception-6b39cf29a72d4b2ca959f08a3619847d)
+
+[![Makefile CI](https://github.com/Ahngbeom/Inception/actions/workflows/makefile.yml/badge.svg)](https://github.com/Ahngbeom/Inception/actions/workflows/makefile.yml)
+
+[![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)](https://jr-developer-ahngbeom.notion.site/Inception-6b39cf29a72d4b2ca959f08a3619847d)
 
 ## How to
 
