@@ -1,10 +1,15 @@
 #!/bin/bash
 set -e
 
+mysql --version
+
 service mysql start
 
+# mysql -u root -e "alter user 'root'@'localhost' identified with mysql_native_password by 'pw123';"
+mysql -u root -e "SET PASSWORD FOR 'root'@localhost = PASSWORD('1234');"
+
 ## DB 생성
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DATABASE; FLUSH PRIVILEGES;"
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DATABASE;"
 
 ## 일반 계정 생성
 mysql -u root -e "CREATE USER IF NOT EXISTS '$MARIADB_USER'@'localhost' IDENTIFIED BY '$MARIADB_PASSWORD';"
