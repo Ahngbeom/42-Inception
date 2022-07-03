@@ -1,7 +1,6 @@
 FROM debian:buster
 
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
-		# mariadb-client \
 		mariadb-server \
 		wget
 
@@ -12,7 +11,7 @@ COPY conf/ /etc/mysql/
 COPY tools/ /var/tmp/
 
 RUN chmod +x /var/tmp/db-init.sh
-# ENTRYPOINT [ "/var/tmp/db-init.sh" ]
+
 ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
 
 CMD [ "/var/tmp/db-init.sh" ]
