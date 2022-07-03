@@ -4,6 +4,11 @@ up:
 # docker-compose -f srcs/docker-compose.yml -p inception up --build --detach
 	docker-compose -f srcs/docker-compose.yml -p inception up --build
 
+up-detach:
+	@mkdir -p ~/data/mariadb_data
+	@mkdir -p ~/data/wordpress_data
+	docker-compose -f srcs/docker-compose.yml -p inception up --build --detach
+
 down:
 	docker-compose -f srcs/docker-compose.yml -p inception down
 
