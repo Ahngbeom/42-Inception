@@ -64,9 +64,11 @@ if [ ! -d "/var/lib/mysql/$MARIADB_DATABASE" ]; then
 # mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '$MARIADB_ADMIN'@'localhost' IDENTIFIED BY '$MARIADB_ADMIN_PASSWORD' WITH GRANT OPTION;"
 # mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '$MARIADB_ADMIN'@'%' IDENTIFIED BY '$MARIADB_ADMIN_PASSWORD' WITH GRANT OPTION;"
 
-eval "echo \"$(cat //var/tmp/query.sql)\"" | mariadb
+eval "echo \"$(cat /var/tmp/query.sql)\"" | mariadb
 fi
 
 service mysql stop
+
+mysqld_safe
 
 exec "$@"
