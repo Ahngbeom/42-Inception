@@ -1,3 +1,8 @@
+------------------------------------------
+-- MariaDB Initialization for WordPress --
+------------------------------------------
+
+-- DB 생성
 CREATE DATABASE IF NOT EXISTS $MARIADB_DATABASE;
 
 -- 일반 계정 생성
@@ -18,3 +23,12 @@ GRANT ALL PRIVILEGES ON $MARIADB_DATABASE.* TO '$MARIADB_USER'@'%' IDENTIFIED BY
 -- 관리자 계정의 DB 접근 권한 부여
 GRANT ALL PRIVILEGES ON *.* TO '$MARIADB_ADMIN'@'localhost' IDENTIFIED BY '$MARIADB_ADMIN_PASSWORD' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO '$MARIADB_ADMIN'@'%' IDENTIFIED BY '$MARIADB_ADMIN_PASSWORD' WITH GRANT OPTION;
+
+ALTER USER root@localhost IDENTIFIED VIA mysql_native_password;
+SET PASSWORD = PASSWORD('$MARIADB_ROOT_PASSWORD');
+
+SHOW DATABASES;
+
+USE $MARIADB_DATABASE; SHOW TABLES;
+
+SELECT user, host, password, authentication_string, plugin FROM mysql.user;
