@@ -32,8 +32,8 @@ jobs:
     - name: make up-detach
       run: make up-detach
     
-    - name: make re
-      run: make re
+    - name: make re-detach
+      run: make re-detach
       
     - name: make fclean
       run: make fclean

@@ -34,4 +34,6 @@ fclean: clean
 
 re : clean up
 
+re-detach : clean up-detach
+
 .PHONY : up down restart clean fclean re
