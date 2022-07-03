@@ -14,8 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: make
-      run: make
+    - name: make up-detach
+      run: make up-detach
       
     - name: make restart
       run: make restart
