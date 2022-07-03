@@ -23,14 +23,14 @@ jobs:
     - name: make down
       run: make down
       
-    - name: make up
-      run: make up
+    - name: make up-detach
+      run: make up-detach
     
     - name: make clean
       run: make clean
     
-    - name: make up
-      run: make up
+    - name: make up-detach
+      run: make up-detach
     
     - name: make re
       run: make re
