@@ -76,8 +76,5 @@ sudo mkdir -p /mnt/cdrom
 # 광학 이미지를 Mount
 sudo mount /dev/cdrom /mnt/cdrom
 
-# Mount된 디렉토리로 이동
-cd /mnt/cdrom
-
 # Guest Image의 실행 파일을 직접 실행 (nox11은 xterm 화면이 나타나지 않도록 설정)
-sudo sh ./VBoxLinuxAdditions.run —nox11
+sudo sh /mnt/cdrom/VBoxLinuxAdditions.run —nox11
